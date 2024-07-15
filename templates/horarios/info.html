@@ -1,54 +1,53 @@
 {%extends "./base/base.html"%} {%block content%}
-<main class="bg-slate-500 w-full py-6 mx-auto">
-  <div
-    class="container flex-col space-y-20 mx-auto p-6 bg-slate-200 rounded-xl"
-  >
-    <div class="grid grid-col  justify-center text-center">
-        <h1 class="text-xl bold">Horário: <strong>{{info.name}}</strong> <br> Linha <strong>{{info.box}}</strong></h1>
-      <table
-        class=" w-fit place-item-center text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
+<div class="container flex-col space-y-20 mx-auto p-6 bg-slate-200 rounded-xl">
+  <div class="grid grid-col justify-center text-center">
+    <h1 class="text-xl bold">
+      Horário: <strong>{{info.name}}</strong> <br />
+      Linha <strong>{{info.box}}</strong>
+    </h1>
+    <table
+      class="w-fit place-item-center text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
+    >
+      <thead
+        class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
       >
-        <thead
-          class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
-        >
-          <tr>
-            <th scope="col" class="px-6 py-3">Dias Úteis</th>
-            <th scope="col" class="px-6 py-3">Sábado</th>
-            <th scope="col" class="px-6 py-3">Domingo/Fériado</th>
-            <th scope="col" class="px-6 py-3"></th>
-            <th scope="col" class="px-6 py-3">Ida</th>
-            <th scope="col" class="px-6 py-3">Volta</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for normal, alternado in horarios%}
+        <tr>
+          <th scope="col" class="px-6 py-3">Dias Úteis</th>
+          <th scope="col" class="px-6 py-3">Sábado</th>
+          <th scope="col" class="px-6 py-3">Domingo/Fériado</th>
+          <th scope="col" class="px-6 py-3"></th>
+          <th scope="col" class="px-6 py-3">Ida</th>
+          <th scope="col" class="px-6 py-3">Volta</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for normal, alternado in horarios%}
 
-          <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-            <th
-              scope="row"
-              class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-            >
-              {{normal}}
-            </th>
-            <td class="px-6 py-4 font-medium text-white">{{alternado}}</td>
-            <td class="px-6 py-4 font-medium text-white">{{alternado}}</td>
-            <td class="px-6 py-4 font-medium text-white"></td>
-            <td class="px-6 py-4 font-medium text-white">-</td>
-            <td class="px-6 py-4 font-medium text-white">-</td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-    </div>
-
-    <div class="flex justify-center">
-      <iframe
-        src="https://www.google.com/maps/d/embed?mid=1_lX12mf0vE5q23dv41HL3ZL_YGSWrng&ehbc=2E312F"
-        width="1000"
-        height="480"
-      ></iframe>
-    </div>
+        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+          <th
+            scope="row"
+            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+          >
+            {{normal}}
+          </th>
+          <td class="px-6 py-4 font-medium text-white">{{alternado}}</td>
+          <td class="px-6 py-4 font-medium text-white">{{alternado}}</td>
+          <td class="px-6 py-4 font-medium text-white"></td>
+          <td class="px-6 py-4 font-medium text-white">-</td>
+          <td class="px-6 py-4 font-medium text-white">-</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
   </div>
-</main>
+
+  <div class="flex justify-center">
+    <iframe
+      src="https://www.google.com/maps/d/embed?mid=1_lX12mf0vE5q23dv41HL3ZL_YGSWrng&ehbc=2E312F"
+      width="1000"
+      height="480"
+    ></iframe>
+  </div>
+</div>
 
 {%endblock%}

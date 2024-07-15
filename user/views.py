@@ -12,7 +12,6 @@ def registrar_usuario(request):
             return render(request, 'user/index.html', {'form': form, 'errors': form.errors})
 
     else:
-        print('erro')
         form = UserForm()
 
     return render(request, 'user/index.html', {'form': form})

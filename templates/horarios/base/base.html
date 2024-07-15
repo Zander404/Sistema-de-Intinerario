@@ -11,13 +11,17 @@
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
 
-  <body class="bg-slate-400">
-    <header class="grid grid-cols-3 w-full h-32">
-      <div id="Logo" class="flex justify-center item-center">
+  <body class="bg-slate-400 w-full">
+    <header class="grid grid-cols-3 w-full h-32 text-3xl">
+      <a
+        href="{% url 'index'%}"
+        id="Logo"
+        class="flex justify-center items-center"
+      >
         <img src="{% static 'img/logo.png' %}" width="160" alt="Logo" />
-      </div>
+      </a>
       <div class=""></div>
-      <div id="acess_area" class="grid grid-cols-5 gap-10 items-center">
+      <div id="acess_area" class="flex flex-cols gap-10 items-center">
         <div id="" class="col-start-3">
           <a href="{%url 'login'%}" class="btn hover:bg-opacity-50"
             ><svg
@@ -99,11 +103,15 @@
         </li>
       </div>
     </nav>
-    {% block content %} {% endblock %}
-    <footer class="grid w-full grid-cols-3">
-      <div class="flex justify-center item-center">
+    <main class="bg-slate-500 flex justify-center items-center w-full p-6 mx-auto h-screen lg:h-fit">
+      {% block content %}
+      {% endblock %}
+
+    </main>
+    <footer class="grid grid-cols-3 w-full h-fit">
+      <a href="{%url 'index'%}" class="flex justify-center item-center">
         <img src="{% static '/img/logo.png' %}" alt="logo" width="200" />
-      </div>
+      </a>
       <div id="footer_sobre" class="text-black text-center">
         <p class="text-bold text-md">LINKS ÚTEIS</p>
         <div>

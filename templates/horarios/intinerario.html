@@ -1,21 +1,24 @@
 {%extends './base/base.html'%} {%block content%}
-<main class="bg-slate-500 w-full py-6 mx-auto">
-  <div
-    class="container flex-col mx-auto p-6 bg-slate-200 rounded-xl my-10 space-y-6"
+
+<div
+    class="flex flex-col justify-center items-center p-6 bg-slate-200 rounded-xl my-10 space-y-6 w-full"
   >
     <h1 class="text-3xl">Rotas</h1>
 
     <!-- CAIXA DE PESQUISA -->
-    <div id="div_pesquisar_rota" class="flex item-center">
-      <label class="">
-        <input
-          id="input_pesquisa"
-          type="text"
-          placeholder="Type here"
-          class="input input-sm input-bordered border-black bg-white rounded-xl"
-        />
-      </label>
-      <a class="btn btn-sm">
+    <div id="div_pesquisar_rota">
+        <form class="flex flex-row gap-2" method="get" action="{% url 'search_rote' %}" >
+            <label class="">
+              <input
+                id="input_pesquisa"
+                name="query"
+                type="text"
+                placeholder="Type here"
+                value="{{query}}"
+                class="input input-sm input-bordered border-black bg-white rounded-xl"
+              />
+            </label>
+            <button type="submit" class="btn btn-sm">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -31,19 +34,20 @@
           />
         </svg>
       </a>
+    </form>
     </div>
 
     <!-- LINHAS DE ONIBUS -->
     <div
       id="linhas_de_onibus"
-      class="container grid grid-cols-4 bg-white border-black rounded-md lg:min-h-[600px] max-h-fit"
+      class="container grid grid-cols-4 bg-white border-black rounded-md lg:min-h-fit p-6"
     >
       <div class="grid auto-rows-auto md:grid-rows-10">
         {% for item in page_obj.object_list %}
         <li class="">
           <a
             class="link text-blue-400 underline hover:text-blue-800 visited:text-purple-600"
-            href="{{item.box}}/"
+            href="/intinerario/{{item.box}}/"
           >
             {{item.box}} | {{item.name}}
           </a>
@@ -79,6 +83,6 @@
           {% endif %}
       </span>
   </div>
-  </div>
-</main>
+</div>
+
 {%endblock%}

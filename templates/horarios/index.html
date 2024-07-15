@@ -1,9 +1,32 @@
 {% extends 'horarios/base/base.html' %}{% block content %}
-<main class="bg-slate-500 w-full py-6 mx-auto">
-  <div
-    class="container flex-col mx-auto p-6 bg-slate-200 rounded-xl my-10 space-y-6"
-  >
-    <h1 class="text-black">AREA INICIO</h1>
+<div
+  class="container w-full mx-auto p-6 bg-slate-200 rounded-xl my-10 space-y-6"
+>
+  <h1 class="text-black">ÁREA INICIO</h1>
+  <div class="grid grid-cols-3 place-items-center w-full p-6">
+    <div class="w-24 h-24">
+      <div
+        class="w-full h-full bg-center bg-cover"
+        style="background-image: url(https://fakeimg.pl/600x400)"
+      ></div>
+      <a href="{% url 'index' %}" class="text-bold text-black">LINK DIRETO</a>
+    </div>
+
+    <div class="w-24 h-24">
+      <div
+        class="w-full h-full bg-center bg-cover"
+        style="background-image: url(https://fakeimg.pl/600x400)"
+      ></div>
+      <a href="{% url 'index' %}" class="text-bold text-black">LINK DIRETO</a>
+    </div>
+    <div class="w-24 h-24">
+      <div
+        class="w-full h-full bg-center bg-cover"
+        style="background-image: url(https://fakeimg.pl/600x400)"
+      ></div>
+      <a href="{% url 'index' %}" class="text-bold text-black">LINK DIRETO</a>
+    </div>
   </div>
-</main>
+</div>
+
 {% endblock %}
