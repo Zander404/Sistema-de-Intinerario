@@ -1,0 +1,28 @@
+{%extends "./base/base.html"%}{%block content%}
+
+<main id="main_content" class="w-full py-6 mx-auto">
+  <div
+    class="container flex justify-center mx-auto p-6 bg-slate-200 rounded-xl my-10 space-y-6 rounded-md border border-black"
+  >
+    <div
+      class="container w-full grid-rows-2 text-center justify-center bg-red-500 bg-opacity-30 text-white text-center rounded-md border border-black"
+    >
+      <span>LOGIN</span>
+      <form class="grid grid-rows-4 gap-5 justify-center p-8 border border-black rounded-md" onsubmit="">
+        <label class="form-control max-w-xs placeholder-white">
+            <div class="label"><span class="label-text text-black text-2xl">Usuário</span></div>
+          <input class="input input-bordered bg-white text-black" type="email" />
+        </label>
+
+        <label class="form-control w-full max-w-xs placeholder-white">
+          <div class="label"><span class="label-text text-black text-2xl">Senha</span></div>
+          <input class="input input-bordered bg-white text-black" type="password" />
+        </label>
+
+        <input type="submit" class="btn btn-primary btn-xl" />
+      </form>
+    </div>
+  </div>
+</main>
+
+{%endblock%}

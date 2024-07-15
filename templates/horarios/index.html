@@ -1,0 +1,84 @@
+{%extends './base/base.html'%} {%block content%}
+<main class="bg-slate-500 w-full py-6 mx-auto">
+  <div
+    class="container flex-col mx-auto p-6 bg-slate-200 rounded-xl my-10 space-y-6"
+  >
+    <h1 class="text-3xl">Rotas</h1>
+
+    <!-- CAIXA DE PESQUISA -->
+    <div id="div_pesquisar_rota" class="flex item-center">
+      <label class="">
+        <input
+          id="input_pesquisa"
+          type="text"
+          placeholder="Type here"
+          class="input input-sm input-bordered border-black bg-white rounded-xl"
+        />
+      </label>
+      <a class="btn btn-sm">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="size-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+          />
+        </svg>
+      </a>
+    </div>
+
+    <!-- LINHAS DE ONIBUS -->
+    <div
+      id="linhas_de_onibus"
+      class="container grid grid-cols-4 bg-white border-black rounded-md lg:min-h-[600px] max-h-fit"
+    >
+      <div class="grid auto-rows-auto md:grid-rows-10">
+        {% for item in page_obj.object_list %}
+        <li class="">
+          <a
+            class="link text-blue-400 underline hover:text-blue-800 visited:text-purple-600"
+            href="/{{item.box}}/"
+          >
+            {{item.box}} | {{item.name}}
+          </a>
+        </li>
+        {% if forloop.counter0|divisibleby:10 and not forloop.first %}
+      </div>
+      <div class="grid auto-rows-auto md:grid-rows-10">
+        {% endif %} {%endfor%}
+      </div>
+    </div>
+    
+    <!-- PAGINAÇÃO -->
+    <div class="flex pagination join justify-center ">
+      <span class="step-links">
+          {% if page_obj.has_previous %}
+              <a class="btn join-item btn-xs" href="?page=1">&laquo;&laquo; </a>
+              <a class="btn join-item btn-xs" href="?page={{ page_obj.previous_page_number }}">anterior</a>
+          {% endif %}
+
+          {% for num in page_obj.paginator.page_range %}
+              {% if num >= page_obj.number|add:'-2' and num <= page_obj.number|add:'3' %}
+                  {% if num == page_obj.number %}
+                      <span class="btn join-item btn-xs bg-opacity-50 text-white" class="current">{{ num }}</span>
+                  {% else %}
+                      <a class="join-item btn btn-xs" href="?page={{ num }}">{{ num }}</a>
+                  {% endif %}
+              {% endif %}
+          {% endfor %}
+
+          {% if page_obj.has_next %}
+              <a class="btn join-item btn-xs" href="?page={{ page_obj.next_page_number }}">próxima</a>
+              <a class="btn join-item btn-xs" href="?page={{ page_obj.paginator.num_pages }}">&raquo; &raquo;</a>
+          {% endif %}
+      </span>
+  </div>
+  </div>
+</main>
+{%endblock%}
