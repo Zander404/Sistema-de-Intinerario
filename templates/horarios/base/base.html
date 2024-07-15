@@ -14,7 +14,7 @@
   <body class="bg-slate-400">
     <header class="grid grid-cols-3 w-full h-32">
       <div id="Logo" class="flex justify-center item-center">
-        <img src="{% static 'img/logo.png' %}" width="200" alt="My image" />
+        <img src="{% static 'img/logo.png' %}" width="160" alt="Logo" />
       </div>
       <div class=""></div>
       <div id="acess_area" class="grid grid-cols-5 gap-10 items-center">
@@ -62,29 +62,49 @@
       <div
         class="grid grid-cols-5 gap-4 text-center text-black text-xl bg-white bg-opacity-50 p-6 rounded-xl w-fit border"
       >
-        <a class="link text-center hover:text-blue-800" href="{% url 'index' %}"
-          >Inicio</a
-        >
-        <a class="link text-center hover:text-blue-800" href="{% url 'index' %}"
-          >Intinerario</a
-        >
-        <a class="link text-center hover:text-blue-800" href="{% url 'index' %}"
-          >Institucional</a
-        >
-        <a class="link text-center hover:text-blue-800" href="{% url 'index' %}"
-          >Transporte</a
-        >
-        <a class="link text-center hover:text-blue-800" href="{% url 'index' %}"
-          >Contato</a
-        >
+        <li>
+          <a
+            class="link text-center hover:text-blue-800 {% if request.path == '/' %} text-blue-800 {% endif %}"
+            href="{% url 'index' %}"
+            >Inicio</a
+          >
+        </li>
+        <li>
+          <a
+            class="link text-center hover:text-blue-800 {% if request.path == '/intinerario/' %} text-blue-800 {% endif %}"
+            href="{% url 'intinerario' %}"
+            >Intinerario</a
+          >
+        </li>
+        <li>
+          <a
+            class="link text-center hover:text-blue-800 {% if request.path == '/institucional/' %} text-blue-800 {% endif %}"
+            href="{% url 'institucional' %}"
+            >Institucional</a
+          >
+        </li>
+        <li>
+          <a
+            class="link text-center hover:text-blue-800 {% if request.path == '/transporte/' %} text-blue-800 {% endif %}"
+            href="{% url 'transporte' %}"
+            >Transporte</a
+          >
+        </li>
+        <li>
+          <a
+            class="link text-center hover:text-blue-800 {% if request.path == '/contato/' %} text-blue-800 {% endif %}"
+            href="{% url 'contato' %}"
+            >Contato</a
+          >
+        </li>
       </div>
     </nav>
     {% block content %} {% endblock %}
     <footer class="grid w-full grid-cols-3">
       <div class="flex justify-center item-center">
-        <img src="{% static '/img/logo.png' %}" alt="logo" width="200">
+        <img src="{% static '/img/logo.png' %}" alt="logo" width="200" />
       </div>
-      <div id="footer_sobre" class=" text-black text-center ">
+      <div id="footer_sobre" class="text-black text-center">
         <p class="text-bold text-md">LINKS ÚTEIS</p>
         <div>
           <a></a>
@@ -93,7 +113,10 @@
           <a></a>
         </div>
       </div>
-      <div id="footer_credits" class="grid grid-rows-4 text-black my-2 text-xs text-start -space-y-2">
+      <div
+        id="footer_credits"
+        class="grid grid-rows-4 text-black my-2 text-xs text-start -space-y-2"
+      >
         <p>CRIAS</p>
         <p>CNPJ:XX.XXX.XXX/XXXX-XX</p>
         <p>AV EXEMPLO, CEP: XXXXX-XXX</p>
