@@ -17,5 +17,4 @@ def registrar_usuario(request):
     return render(request, 'user/index.html', {'form': form})
 
 
-def painel(request):
-    return render(request, 'user/system.html')
+

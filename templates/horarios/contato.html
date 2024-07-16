@@ -1,7 +1,81 @@
 {% extends 'horarios/base/base.html' %}{% block content %}
+{% load static%}
 <div
-  class="container flex-col mx-auto p-6 bg-slate-200 rounded-xl my-10 space-y-6"
+  class="container grid auto-rows-auto justify-center mx-auto p-6 bg-slate-200 rounded-xl my-10 space-y-6"
 >
-  <h1 class="text-black">AREA CONTATO</h1>
+  <h1 class="text-black">Área de Reclamações / Sugestões / Elogios</h1>
+  <div class="grid grid-cols-1 lg:grid-cols-3 place-items-center">
+    <form
+      class="container bg-white grid auto-rows-auto w-full p-6 space-y-4 justify-center border border-black rounded-md"
+      action="mailto:destinatario@example.com"
+      enctype="text/plain"
+      method="post"
+    >
+      <label class="form-control">
+        <div class="label">
+          <span class="label-text text-black">Nome</span>
+        </div>
+        <input
+          type="text"
+          placeholder="Almeida Carvalho"
+          class="input input-bordered lg:w-96"
+          required
+          
+        />
+      </label>
+
+      <label class="form-control w-full lg:w-96">
+        <div class="label">
+          <span class="label-text text-black">Email</span>
+        </div>
+        <input
+          type="email"
+          placeholder="example@example.com"
+          class="input input-bordered w-full lg:w-96"
+          required
+        />
+      </label>
+
+      <label class="form-control w-full lg:w-96">
+        <div class="label">
+          <span class="label-text text-black">Telefone</span>
+        </div>
+        <input
+          id="telefone_id"
+          type="text"
+          placeholder="(xx) XXXXX XXXX"
+          pattern="[789][0-9]{9}"
+          class="input input-bordered w-full lg:w-96"
+        />
+      </label>
+
+      <label class="form-control w-full lg:w-96">
+        <div class="label">
+          <span class="label-text text-black">Message</span>
+        </div>
+        <textarea
+          class="textarea textarea-bordered h-24 text-black"
+          placeholder="Bio"
+        ></textarea>
+      </label>
+      <button class="btn btn-md lg:w-96 text-white" type="submit">Enviar</button>
+    </form>
+    <div class="divider w-full h-full lg:divider-horizontal divider-neutral"></div>
+
+
+    <div
+      class="flex flex-col text-black space-y-8 text-xs text-start"
+    >
+    <div class=" grid grid-row-2  space-y-4 place-items-center">
+      <img src="{% static 'img/logo.png' %}" width="120">
+      <p class="text-xl text-black">Crias LTDA</p>
+    </div>
+      <p class="text-xl text-black">CNPJ:XX.XXX.XXX/XXXX-XX</p>
+      <p class="text-xl text-black">AV EXEMPLO, CEP: XXXXX-XXX</p>
+      <p class="text-xl text-black">TELEFONE: (XX)XXXXX-XXXX</p>
+      <p class="text-xl text-black">EMAIL: example@example.com</p>
+    </div>
+  </div>
 </div>
+
 {% endblock %}

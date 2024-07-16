@@ -70,15 +70,15 @@
           {% for num in page_obj.paginator.page_range %}
               {% if num >= page_obj.number|add:'-2' and num <= page_obj.number|add:'3' %}
                   {% if num == page_obj.number %}
-                      <span class="btn join-item btn-xs bg-opacity-50 text-white" class="current">{{ num }}</span>
+                      <span class="btn join-item btn-xs bg-opacity-50 text-white">{{num}}</span>
                   {% else %}
-                      <a class="join-item btn btn-xs" href="?page={{ num }}">{{ num }}</a>
+                      <a class="join-item btn btn-xs" href="?page={{num}}">{{num}}</a>
                   {% endif %}
               {% endif %}
           {% endfor %}
 
           {% if page_obj.has_next %}
-              <a class="btn join-item btn-xs" href="?page={{ page_obj.next_page_number }}">próxima</a>
+              <a class="btn join-item btn-xs" href="?page={{ page_obj.has_next_page_number }}">próxima</a>
               <a class="btn join-item btn-xs" href="?page={{ page_obj.paginator.num_pages }}">&raquo; &raquo;</a>
           {% endif %}
       </span>
