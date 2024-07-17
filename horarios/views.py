@@ -50,13 +50,13 @@ def info(request, box):
 
 
 # -----------------------------ROTAS ADMINS-----------------------------------------
-# @login_required(login_url='login/')
+@login_required(login_url='login')
 def painel(request):
     return render(request, 'user/system.html')
 
 
 ## ----------------------ROTAS CRUD DE INTINERARIO----------------------------------
-# @login_required(login_url='login/')
+@login_required(login_url='login/')
 def create_rote(request):
     if request.method == 'POST':
         form = RoteForms(request.POST)
@@ -70,6 +70,7 @@ def create_rote(request):
     return render(request, 'horarios/crud/rote/form.html', {'form': form})
 
 
+@login_required(login_url='login/')
 def read_rote(request):
     rotes = Rote.objects.all().order_by('id')
     pagination = Paginator(rotes, 30)
@@ -78,11 +79,14 @@ def read_rote(request):
     return render(request, 'horarios/crud/rote/list.html', {'page_obj': page_obj, 'totla_pages': pagination.num_pages})
 
 
+@login_required(login_url='login/')
 def detail_rote(request, pk):
     rote = get_object_or_404(Rote, pk=pk)
-    return render(request, 'horarios/crud/rote/detail.html', {'rote': rote})
+    times = list(zip(rote.weekly_time, rote.sartuday_time, rote.alternative_time))
+    return render(request, 'horarios/crud/rote/detail.html', {'rote': rote, 'times': times})
 
-# @login_required(login_url='login/')
+
+@login_required(login_url='login/')
 def update_rote(request, pk):
     rote = get_object_or_404(Rote, pk=pk)
 
@@ -97,7 +101,8 @@ def update_rote(request, pk):
 
     return render(request, 'horarios/crud/rote/form.html', {'form': form})
 
-# @login_required(login_url='login/')
+
+@login_required(login_url='login/')
 def delete_rote(request, pk):
     rote = get_object_or_404(Rote, pk=pk)
     if request.method == 'POST':

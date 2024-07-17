@@ -2,17 +2,47 @@
 <div
   class="grid auto-cols-auto justify-center items-center p-6 bg-slate-200 rounded-xl space-y-6 w-full"
 >
-  <p>{{rote.id}}</p>
-  <p>{{rote.name}}</p>
-  <p>{{rote.box}}</p>
-  <p>{{rote.rote}}</p>
+  <div class="container bg-white grid grid-cols-1 gap-6 mx-auto p-6 border border-black rounded-md text-black justify-center">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 text-center">
+      <p class="text-black text-bold">Linha: {{rote.name}}</p>
+      <p class="text-black text-bold">Box: {{rote.box}}</p>
+
+    <span class="label grid grid-cols-1 h-fit w-fit text-center">
+      <h3 class="text-bold text-lg">Horários</h3>
+      <div class="overflow-x-auto">
+        <table class="table text-center text-black">
+          <thead class="text-slate-500">
+            <th>Dia da Semana</th>
+            <th>Dia de Sábado</th>
+            <th>Dia de Domingo / Feriados</th>
+          </thead>
+          <tbody>
+            {%if rote.weekly_time or rote.sartuday_time or rote.alternative_time %}
+              {%for normal, sarturday, alternative in times%}
+                <tr>
+                  <td>{{normal}}</td>
+                  <td>{{sarturday}}</td>
+                  <td>{{alternative}}</td>
+                </tr>
+                {%endfor%}
+            {%endif%}
+          </tbody>
+        </table>
+      </div>
+    </span>
+    <iframe
+      src="https://www.google.com/maps/d/embed?mid=1_lX12mf0vE5q23dv41HL3ZL_YGSWrng&ehbc=2E312F"
+      width="600"
+      height="480"
+    ></iframe>
+  </div>
   <!-- {{rote.}} -->
-  <a href="{% url 'update_rote' rote.id %}">Edit</a>
-  <form method="post" action="{% url 'delete_rote' rote.id %}">
+  <form class="w-full grid grid-cols-2 gap-12" method="post" action="{% url 'delete_rote' rote.id %}">
     {% csrf_token %}
-    <button type="submit">Delete</button>
+    <a class="btn btn-info" href="{% url 'update_rote' rote.id %}">Edit</a>
+    <button class="btn btn-error" type="submit">Delete</button>
   </form>
-  <a href="{% url 'list_rotes' %}">Voltar para a lista</a>
+  <a class="btn" href="{% url 'list_rotes' %}">Voltar para a lista</a>
 </div>
 
 {%endblock%}

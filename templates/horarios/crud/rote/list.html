@@ -25,8 +25,8 @@
                     <th>{{rota.box}}</th>
                     <th>{{rota.name}}</th>
                     <th class=" grid grid-cols-2 gap-6">
+                        <a class="btn btn-xs text-white mx-2 px-8"> visualizar</a>
                         <a href="{% url 'update_rote' rota.id%}" class="btn btn-xs text-white mx-2 px-8"> editar</a>
-                        <a class="btn btn-xs text-white mx-2 px-8"> excluir</a>
                     </th>
                 </tr>
                 {%endfor%}

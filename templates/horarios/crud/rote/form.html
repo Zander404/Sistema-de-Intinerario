@@ -58,26 +58,10 @@
           placeholder="Digite os horarios separados por vírgula
           Ex: 09:00, 12:00, 20:00"
         >
-        {{form.weekly_time.value}}
-      </textarea
-        >
-      </label>
-
-      <label class="form-control text-black">
-        <div class="label">
-          <span>Horario de Sabado</span>
-        </div>
-        <textarea
-          name="sartuday_time"
-          type="text"
-          class="textarea h-32 dark:text-white"
-          placeholder="Digite os horarios separados por vírgula
-          Ex: 09:00, 12:00, 20:00"
-        >
-        {% if form.sartuday_time.value %}
-        {% for time in form.sartuday_time.value %}
-            {{ time }}
-            {% if not forloop.last %},{% endif %}
+ 
+        {% if form.weekly_time.value %}
+        {% for time in form.weekly_time.value %}
+            {{ time }}{% if not forloop.last %},{% endif %}
         {% endfor %}
     {% endif %}
       </textarea
@@ -86,7 +70,27 @@
 
       <label class="form-control text-black">
         <div class="label">
-          <span class="label">Horario de Domingo/Feriados</span>
+          <span>Horário de Sabado</span>
+        </div>
+        <textarea
+          name="sartuday_time"
+          type="text"
+          class="textarea h-32 gap-4 dark:text-white"
+          placeholder="Digite os horarios separados por vírgula
+          Ex: 09:00, 12:00, 20:00"
+        >
+        {% if form.sartuday_time.value %}
+        {% for time in form.sartuday_time.value %}
+            {{ time }}{% if not forloop.last %},{% endif %}
+        {% endfor %}
+    {% endif %}
+      </textarea
+        >
+      </label>
+
+      <label class="form-control text-black">
+        <div class="label">
+          <span class="label">Horário de Domingo/Feriados</span>
         </div>
         <textarea
           name="alternative_time"
@@ -95,7 +99,12 @@
           placeholder="Digite os horarios separados por vírgula
           Ex: 09:00, 12:00, 20:00"
         >
-          {{form.alternative_time.value}}
+    
+        {% if form.alternative_time.value %}
+        {% for time in form.alternative_time.value %}
+            {{ time }}{% if not forloop.last %},{% endif %}
+        {% endfor %}
+    {% endif %}
       </textarea
         >
       </label>
@@ -107,17 +116,18 @@
         <input
           name="rote"
           type="url"
+          value="{{form.rote.value}}"
           class="input dark:text-white truncate"
           placeholder="Ex: https://www.google.com/maps/d/embed?"
         />
       </label>
 
-      <button class="btn btn-md" type="submit">Save</button>
+      <button class="btn btn-md btn-success w-full" type="submit">Salvar</button>
     </form>
     <a
-      class="btn btn-sm btn-outline btn-info item-start"
+      class="btn btn-sm btn-info item-start"
       href="{% url 'list_rotes' %}"
-      >Back to list</a
+      >Voltar para a lista</a
     >
   </div>
 </div>

@@ -28,6 +28,7 @@ DEBUG = bool(os.environ.get('DEBUG', default=0))
 
 ALLOWED_HOSTS = str(os.environ.get("ALLOWED_HOSTS")).split(' ')
 
+LOGIN_REDIRECT_URL = 'login'
 
 # Application definition
 
