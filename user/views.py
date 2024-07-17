@@ -31,7 +31,7 @@ def login_view(request):
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('painel')
+                return redirect('painel/rote')
             
             else:
                 messages.error(request, 'Usuário ou senha incorretos')
