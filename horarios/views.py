@@ -34,7 +34,7 @@ def intinerario(request):
 
 def search_intinerario(request):
     query = request.GET.get('query', '')
-    data = Rote.objects.filter(name__icontains=query) or Rote.objects.filter(box__icontains=query) if query else []
+    data = Rote.objects.filter(name__icontains=query) or Rote.objects.filter(box__icontains=query) if query else Rote.objects.all().order_by('box')
     paginator = Paginator(data, 42)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
@@ -62,12 +62,12 @@ def create_rote(request):
         form = RoteForms(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('list_items')
+            return redirect('list_rotes')
         
-        else:
-            form = RoteForms()
+    else:
+        form = RoteForms()
 
-        return render(request, 'crud/rote/form.html', {'form': form})
+    return render(request, 'horarios/crud/rote/form.html', {'form': form})
 
 
 def read_rote(request):
@@ -90,12 +90,12 @@ def update_rote(request, pk):
         form = RoteForms(request.POST, instance=rote)
         if form.is_valid():
             form.save()
-            return redirect('detail_rote',)
+            return redirect('info_rote', pk=rote.id)
         
-        else:
-            form = RoteForms(instance=rote)
+    else:
+        form = RoteForms(instance=rote)
 
-        return render(request, 'horarios/crud/rote/form.html', {'form': form})
+    return render(request, 'horarios/crud/rote/form.html', {'form': form})
 
 # @login_required(login_url='login/')
 def delete_rote(request, pk):

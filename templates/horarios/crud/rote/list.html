@@ -3,7 +3,7 @@
 <div class="flex flex-col  justify-center items-center p-6 bg-slate-200 rounded-xl space-y-6 w-full">
     <div class="container grid bg-white border-black rounded-md lg:min-h-fit p-6 overflow-x-auto">
         <div class="w-full flex justify-end">
-             <a class='btn my-6'>
+             <a href="{% url 'add_rote' %}" class='btn my-6'>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                   </svg>
@@ -25,7 +25,7 @@
                     <th>{{rota.box}}</th>
                     <th>{{rota.name}}</th>
                     <th class=" grid grid-cols-2 gap-6">
-                        <a class="btn btn-xs text-white mx-2 px-8"> editar</a>
+                        <a href="{% url 'update_rote' rota.id%}" class="btn btn-xs text-white mx-2 px-8"> editar</a>
                         <a class="btn btn-xs text-white mx-2 px-8"> excluir</a>
                     </th>
                 </tr>

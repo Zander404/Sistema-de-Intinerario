@@ -20,8 +20,8 @@ urlpatterns = [
     path('painel/rote/', views.read_rote, name='list_rotes'),
     path('painel/rote/detail_rote/<int:pk>/', views.detail_rote, name='info_rote'),
     path('painel/rote/add_rote', views.create_rote, name='add_rote'),
-    path('painel/rote/update_rote', views.update_rote, name='update_rote'),
-    path('painel/rote/delete_rote', views.delete_rote, name='delete_rote'),
+    path('painel/rote/update_rote/<int:pk>/', views.update_rote, name='update_rote'),
+    path('painel/rote/delete_rote/<int:pk>/', views.delete_rote, name='delete_rote'),
 
 
     ## ROTAS 

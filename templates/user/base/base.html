@@ -12,12 +12,16 @@
   </head>
 
   <body class="bg-slate-400">
-    <header class="grid grid-cols-3 w-full h-32">
-      <a href="{% url 'index'%}" id="Logo" class="flex justify-center item-center">
-        <img src="{% static 'img/logo.png' %}" width="160" alt="My image" />
+    <header class="grid grid-cols-3 w-full h-32 text-3xl">
+      <a
+        href="{% url 'index'%}"
+        id="Logo"
+        class="flex justify-center items-center"
+      >
+        <img src="{% static 'img/logo.png' %}" width="160" alt="Logo" />
       </a>
       <div class=""></div>
-      <div id="acess_area" class="grid grid-cols-5 gap-10 items-center">
+      <div id="acess_area" class="flex flex-cols gap-10 items-center">
         <div id="" class="col-start-3">
           <a href="{%url 'login'%}" class="btn hover:bg-opacity-50"
             ><svg
@@ -61,30 +65,32 @@
     <nav class="flex justify-center mb-2">
       <h1 class="text-3xl text-bold text-white">Colaboradores</h1>
     </nav>
-    <main class="bg-slate-500 flex justify-center items-center w-full p-6 mx-auto lg:h-fit">
-
-      {% block content %}
-      
-      
-      {% endblock %}
+    <main
+      class="bg-slate-500 flex justify-center items-center lg:w-full p-6 mx-auto lg:h-fit"
+    >
+      {% block content %} {% endblock %}
     </main>
-    <footer class="grid h-fit w-full grid-cols-3">
+    <footer class="grid grid-cols-1 lg:grid-cols-3">
       <div class="flex justify-center item-center">
         <img src="{% static '/img/logo.png' %}" alt="logo" width="200" />
       </div>
+
       <div id="footer_sobre" class="text-black text-center">
         <p class="text-bold text-md">LINKS ÚTEIS</p>
         <div>
+          <p>CRIAS</p>
+          <p>CNPJ:XX.XXX.XXX/XXXX-XX</p>
+          <p>AV EXEMPLO, CEP: XXXXX-XXX</p>
+          <p>TELEFONE: (XX)XXXXX-XXXX</p>
+          <p>EMAIL: example@example.com</p>
           <a></a>
           <a></a>
           <a></a>
           <a></a>
         </div>
       </div>
-      <div
-        id="footer_credits"
-        class="grid grid-rows-4 text-black space-y-2 text-xs text-start -space-y-2"
-      >
+
+      <div id="footer_credits" class="text-black text-md text-center">
         <p>CRIAS</p>
         <p>CNPJ:XX.XXX.XXX/XXXX-XX</p>
         <p>AV EXEMPLO, CEP: XXXXX-XXX</p>

@@ -1,0 +1,124 @@
+{% extends 'user/base/base.html' %} {% block content%}
+<head>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css"
+    rel="stylesheet"
+    type="text/css"
+  />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<div
+  class="flex flex-col justify-center items-center p-6 bg-slate-200 rounded-xl space-y-6 w-fit lg:w-full"
+>
+  <div
+    class="container grid bg-white border-black rounded-md w-fit lg:min-h-fit p-6 overflow-x-auto"
+  >
+    <form method="post" action="" class="text-center space-y-6">
+      <h1 class="text-lg text-black">Formulário de Rotas</h1>
+      {% csrf_token %}
+
+      <label class="form-control text-black w-96">
+        <div class="label">
+          <span>Nome da Rota</span>
+        </div>
+        <input
+          name="name"
+          type="text"
+          value="{{form.name.value}}"
+          class="input input-bordered dark:text-white"
+          placeholder="Ex: Rota Pedro Ludovico / São Cristovão"
+          required
+        />
+      </label>
+
+      <label class="form-control text-black">
+        <div class="label">
+          <span>Nº do Box</span>
+        </div>
+        <input
+          name="box"
+          type="number"
+          value="{{form.box.value}}"
+          class="input dark:text-white"
+          placeholder="Ex: 1098"
+          required
+        />
+      </label>
+
+      <label class="form-control text-black">
+        <div class="label">
+          <span>Horario Semanal</span>
+        </div>
+        <textarea
+          name="weekly_time"
+          type="text"
+          class="textarea h-32 dark:text-white"
+          placeholder="Digite os horarios separados por vírgula
+          Ex: 09:00, 12:00, 20:00"
+        >
+        {{form.weekly_time.value}}
+      </textarea
+        >
+      </label>
+
+      <label class="form-control text-black">
+        <div class="label">
+          <span>Horario de Sabado</span>
+        </div>
+        <textarea
+          name="sartuday_time"
+          type="text"
+          class="textarea h-32 dark:text-white"
+          placeholder="Digite os horarios separados por vírgula
+          Ex: 09:00, 12:00, 20:00"
+        >
+        {% if form.sartuday_time.value %}
+        {% for time in form.sartuday_time.value %}
+            {{ time }}
+            {% if not forloop.last %},{% endif %}
+        {% endfor %}
+    {% endif %}
+      </textarea
+        >
+      </label>
+
+      <label class="form-control text-black">
+        <div class="label">
+          <span class="label">Horario de Domingo/Feriados</span>
+        </div>
+        <textarea
+          name="alternative_time"
+          type="text"
+          class="textarea h-32 dark:text-white"
+          placeholder="Digite os horarios separados por vírgula
+          Ex: 09:00, 12:00, 20:00"
+        >
+          {{form.alternative_time.value}}
+      </textarea
+        >
+      </label>
+
+      <label class="form-control text-black">
+        <div class="label">
+          <span>Link da Rota</span>
+        </div>
+        <input
+          name="rote"
+          type="url"
+          class="input dark:text-white truncate"
+          placeholder="Ex: https://www.google.com/maps/d/embed?"
+        />
+      </label>
+
+      <button class="btn btn-md" type="submit">Save</button>
+    </form>
+    <a
+      class="btn btn-sm btn-outline btn-info item-start"
+      href="{% url 'list_rotes' %}"
+      >Back to list</a
+    >
+  </div>
+</div>
+{%endblock%}

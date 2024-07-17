@@ -1,1 +1,18 @@
-TOOTOTO
+{% extends 'user/base/base.html'%} {%block content%}
+<div
+  class="grid auto-cols-auto justify-center items-center p-6 bg-slate-200 rounded-xl space-y-6 w-full"
+>
+  <p>{{rote.id}}</p>
+  <p>{{rote.name}}</p>
+  <p>{{rote.box}}</p>
+  <p>{{rote.rote}}</p>
+  <!-- {{rote.}} -->
+  <a href="{% url 'update_rote' rote.id %}">Edit</a>
+  <form method="post" action="{% url 'delete_rote' rote.id %}">
+    {% csrf_token %}
+    <button type="submit">Delete</button>
+  </form>
+  <a href="{% url 'list_rotes' %}">Voltar para a lista</a>
+</div>
+
+{%endblock%}
