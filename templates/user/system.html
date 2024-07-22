@@ -1,4 +1,12 @@
 {% extends './base/base.html' %} {% block content%}
+<div
+  class="container flex flex-col justify-center mx-auto p-6 bg-slate-200 rounded-xl my-10 space-y-6 rounded-md border border-blacktext-center"
+>
+<h1 class="text-center">Painel</h1>
 
-<h1 class="text-3xl text-black">KJLANSDLJLASJDLKJASDLKJLKASDJ</h1>
+<div class="flex flex-row justify-around gap-10">
+    <a href="{%url 'user_list'%}" class="btn btn-lg">USUÁRIO</a>
+    <a href="{%url 'list_rotes'%}" class="btn btn-lg">ROTAS</a>
+</div>
+</div>
 {% endblock %}

@@ -1,0 +1,22 @@
+{% extends '../base/base.html'%} {%block content%}
+<div
+  class="grid auto-cols-auto justify-center items-center p-6 bg-slate-200 rounded-xl space-y-6 w-full"
+>
+  <div class="container bg-white grid grid-cols-1 gap-6 mx-auto p-6 border border-black rounded-md text-black justify-center">
+    <div class="grid grid-cols-1 lg:grid-rows-4 gap-6 text-center">
+      <h2 class="text-black font-bold">Nome: </h2>
+      <p>{{user.username}}</p>
+
+      <h2 class="text-black font-bold">Email:</h2>
+      <p>{{user.email}}</p>
+
+  <!-- {{user.}} -->
+  <form class="w-full grid grid-cols-2 gap-12" method="post" action="{% url 'user_delete' user.id %}">
+    {% csrf_token %}
+    <a class="btn btn-info" href="{% url 'user_update' user.id %}">Edit</a>
+    <button class="btn btn-error" type="submit">Delete</button>
+  </form>
+  <a class="btn" href="{% url 'user_list' %}">Voltar para a lista</a>
+</div>
+
+{%endblock%}

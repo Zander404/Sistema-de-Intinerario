@@ -1,15 +1,15 @@
 {%extends "./base/base.html"%}{%block content%}
 
-<main id="main_content" class="w-full py-6 mx-auto">
+
   <div
     class="container flex justify-center mx-auto p-6 bg-slate-200 rounded-xl my-10 space-y-6 rounded-md border border-black"
   >
     <div
-      class="container w-full grid-rows-2 text-center justify-center bg-red-500 bg-opacity-30 text-white text-center rounded-md border border-black"
+      class="grid-rows-2 justify-center bg-slate-500 bg-opacity-30 text-white text-center rounded-md border border-black py-4 px-12"
     >
-      <span>LOGIN</span>
+      <span class="text-3xl font-bold">LOGIN</span>
       <form
-        class="grid grid-rows-4 gap-5 justify-center p-8 border border-black rounded-md"
+        class="grid grid-rows-4 gap-5 justify-center m-8 rounded-md"
         method="post"
       >
         {% csrf_token%}
@@ -19,7 +19,7 @@
           class="form-control w-full max-w-xs placeholder-white"
         >
           <div class="label">
-            <span class="label-text text-black text-2xl">username</span>
+            <span class="label-text text-black text-2xl">Nome de Usuário</span>
           </div>
           <input
             id="id_username"
@@ -56,6 +56,5 @@
       </form>
     </div>
   </div>
-</main>
 
 {%endblock%}

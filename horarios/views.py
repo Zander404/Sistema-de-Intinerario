@@ -76,7 +76,7 @@ def read_rote(request):
     pagination = Paginator(rotes, 30)
     page_number = request.GET.get('page')
     page_obj = pagination.get_page(page_number)
-    return render(request, 'horarios/crud/rote/list.html', {'page_obj': page_obj, 'totla_pages': pagination.num_pages})
+    return render(request, 'horarios/crud/rote/list.html', {'page_obj': page_obj, 'total_pages': pagination.num_pages})
 
 
 @login_required(login_url='login/')
